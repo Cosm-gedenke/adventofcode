@@ -2,6 +2,7 @@ use std::io;
 use std::time::Instant;
 
 fn main() {
+    let now = Instant::now();
     let stdin = io::stdin();
     let mut buffer = String::new();
     stdin.read_line(&mut buffer).expect("failed to read line");
@@ -15,7 +16,8 @@ fn main() {
         }
         sum += calculate_palindromes(bounds);
     }
-    println!("the password should be... {}", sum);
+    let elapsed_time = now.elapsed();
+    println!("the password should be... {}, took {}", sum, elapsed_time.as_secs());
 }
 
 
@@ -52,7 +54,7 @@ fn pattern(strnum: String) -> bool {
 
         k=1*(i+1);
         while k < strnum.len() {
-            let mut bounds: usize = (pattern.len()+k);
+            let mut bounds: usize = pattern.len()+k;
             if bounds > strnum.len() {bounds = strnum.len();}
             for j in k..bounds {
                 loopedpattern.push(strnumvec[j]);
