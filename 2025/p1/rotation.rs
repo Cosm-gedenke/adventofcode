@@ -29,7 +29,7 @@ fn lockrotation(rotation: char,lock: &mut i32, line: String) -> i32 {
         }
         *lock = *lock-value;
         while *lock < 0{
-            *lock = 100+*lock;
+            *lock +=100 ;
             result+=1;
         }
         if *lock==0 {
@@ -39,7 +39,7 @@ fn lockrotation(rotation: char,lock: &mut i32, line: String) -> i32 {
     else {
         *lock = *lock+value;
         while *lock > 99 {
-            *lock = *lock-100;
+            *lock -= 100;
             result+=1;
         }
     }
